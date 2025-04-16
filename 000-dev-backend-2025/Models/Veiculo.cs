@@ -22,6 +22,7 @@ namespace _000_dev_backend_2025.Models
         [Required(ErrorMessage = "O campo é obrigatório.")]
         [Display(Name = "Ano de Fabricação")]
         public int AnoFabricacao { get; set; }
+        public ICollection<Consumo> Consumos { get; set; }
 
     }
 }

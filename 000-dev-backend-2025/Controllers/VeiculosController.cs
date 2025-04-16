@@ -110,5 +110,26 @@ namespace _000_dev_backend_2025.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction("Index");
         }
+
+        public async Task<IActionResult> Relatorio(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+            var DadosVeiculo = await _context.Veiculos.FindAsync(id);
+            if (DadosVeiculo == null)
+            {
+                return NotFound();
+            }
+            var Consumos = await _context.Consumos
+                .Where(c => c.IdVeiculo == id)
+                .OrderByDescending(c => c.DataConsumo)
+                .ToListAsync();
+            decimal ValorTotal = Consumos.Sum(c => c.ValorTotal);
+            ViewBag.DadosVeiculo = DadosVeiculo;
+            ViewBag.ValorTotal = ValorTotal;
+            return View(Consumos);
+        }
     }
 }
