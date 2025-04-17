@@ -1,9 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using _000_dev_backend_2025.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 
 namespace _000_dev_backend_2025.Controllers
 {
+    [Authorize]
     public class VeiculosController : Controller
     {
         private readonly AppDbContext _context;

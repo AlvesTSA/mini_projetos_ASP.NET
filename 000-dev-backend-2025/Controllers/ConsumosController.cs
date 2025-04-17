@@ -6,9 +6,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using _000_dev_backend_2025.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace _000_dev_backend_2025.Controllers
 {
+    [Authorize] 
     public class ConsumosController : Controller
     {
         private readonly AppDbContext _context;
